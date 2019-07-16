@@ -40,14 +40,15 @@ host-2-d                  running (virtualbox)
 ```
 
  - Once all the VMs are running verify you can log into all of them by typing:
-   `vagrant ssh router-1`, 
-   `vagrant ssh router-2`
-   `vagrant ssh host-1-a`
-   `vagrant ssh host-1-b`
-   `vagrant ssh host-2-c`
-   `vagrant ssh host-2-d`
+`vagrant ssh router-1`
+`vagrant ssh router-2`
+`vagrant ssh host-1-a`
+`vagrant ssh host-1-b`
+`vagrant ssh host-2-c`
+`vagrant ssh host-2-d`
+
  - You can now save you work, turn-off the VMs and exit from vagrant by typing the command
-   `vagrant global-status | awk '/running/{print $1}' | xargs -r -d '\n' -n 1 -- vagrant suspend` which will result in
+`vagrant global-status | awk '/running/{print $1}' | xargs -r -d '\n' -n 1 -- vagrant suspend` which will result in
 
 ```
 [~/bbr]$ vagrant global-status | awk '/running/{print $1}' | xargs -r -d '\n' -n 1 -- vagrant suspend
@@ -120,7 +121,7 @@ host-2-d                  running (virtualbox)
 
 Given the fact that the default connection bandwidth of the links given by VirtualBox ***should*** be around 1 Gbps -- if not, you can apply the same process also to the hosts -- then, in order to analyse the performance of TCP, we need to create a bottleneck between the two routers. To do so, we need to use `VBoxManage` in the terminal.
 
-**Note**
+**Note** 
 
 > If you are running Windows OS -- whatever version -- you need to open the cmd and go to the path where VBoxManage is (usually located at C:\Program Files\Oracle\VirtualBox, hence `cd C:\Program Files\Oracle\VirtualBox`) otherwise you will not be able to do the steps below.
 
@@ -165,7 +166,7 @@ Name: 'Limit', Type: Network, Limit: 100 mbits/sec (12500000 bytes/sec)
 
 > VM names have been set in vagrant and they are exactly the ones mentioned before. In any case, if you are not sure about their name, just open VirtualBox GUI and check it.
 
-According to the [official VirtualBox Website](https://www.virtualbox.org/manual/ch06.html#network_bandwidth_limit ), such a commands will establish that 
+According to the [official VirtualBox manual](https://www.virtualbox.org/manual/ch06.html#network_bandwidth_limit ), such a commands will establish that 
 "_that specific VM_" will have a traffic limit of 100 Mbps but ***only in the transmit direction***.  This means that if you cut the bandwidth of `router-1` and want to check the TCP performance, you need to use `host-1-a` or `host-1-b` as client and
 `host-2-c` or `host-2-d` as server.
 
