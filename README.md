@@ -141,7 +141,7 @@ These commands will set a bandwidth of 100 Mbps on that specific interface
 
  - nicbandwidthgroup1 is referred to Network adapter 1 in VirtualBox GUI;
 
- - nicbandwidthgroup2 to adapter 2
+ - nicbandwidthgroup2 to adapter 2;
 
  - and so on...
 
