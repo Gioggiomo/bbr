@@ -4,6 +4,8 @@ apt-get update
 apt-get install -y tcpdump --assume-yes
 apt-get install -y curl --assume-yes
 apt-get install iperf3 -y --assume-yes
+apt-get install gnuplot -y --assume-yes
+
 
 # setting BBR as TCP congestion control
 sysctl -w net.core.default_qdisc=fq
