@@ -40,15 +40,15 @@ host-2-d                  running (virtualbox)
 ```
 
  - Once all the VMs are running verify you can log into all of them by typing:
-`vagrant ssh router-1`
-`vagrant ssh router-2`
-`vagrant ssh host-1-a`
-`vagrant ssh host-1-b`
-`vagrant ssh host-2-c`
-`vagrant ssh host-2-d`
+ `vagrant ssh router-1`
+ `vagrant ssh router-2`
+ `vagrant ssh host-1-a`
+ `vagrant ssh host-1-b`
+ `vagrant ssh host-2-c`
+ `vagrant ssh host-2-d`
 
- - You can now save you work, turn-off the VMs and exit from vagrant by typing the command
-`vagrant global-status | awk '/running/{print $1}' | xargs -r -d '\n' -n 1 -- vagrant suspend` which will result in
+ - You can now save you work, turn-off the VMs and exit from vagrant by typing the command 
+ `vagrant global-status | awk '/running/{print $1}' | xargs -r -d '\n' -n 1 -- vagrant suspend` which will result in
 
 ```
 [~/bbr]$ vagrant global-status | awk '/running/{print $1}' | xargs -r -d '\n' -n 1 -- vagrant suspend
