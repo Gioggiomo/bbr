@@ -6,6 +6,7 @@ add-apt-repository add-apt-repository "deb [arch=amd64] https://apps3.cumulusnet
 apt-get update
 apt-get install -y frr --assume-yes --force-yes
 
+
 # Forwarding enabled
 sysctl -w net.ipv4.ip_forward=1
 
