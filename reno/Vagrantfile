@@ -1,0 +1,83 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+# All Vagrant configuration is done below. The "2" in Vagrant.configure
+# configures the configuration version (we support older styles for
+# you're doing.
+# backwards compatibility). Please don't change it unless you know what
+Vagrant.configure("2") do |config|
+  config.vm.box_check_update = false
+  config.vm.provider "virtualbox" do |vb|
+    vb.customize ["modifyvm", :id, "--usb", "on"]
+    vb.customize ["modifyvm", :id, "--usbehci", "off"]
+    vb.customize ["modifyvm", :id, "--nicpromisc2", "allow-all"]
+    vb.customize ["modifyvm", :id, "--nicpromisc3", "allow-all"]
+    vb.customize ["modifyvm", :id, "--nicpromisc4", "allow-all"]
+    vb.customize ["modifyvm", :id, "--nicpromisc5", "allow-all"]
+      vb.customize ["bandwidthctl", :id, "add", "Limit", "--type", "network", "--limit", "1g"]
+      vb.customize ["modifyvm", :id, "--nicbandwidthgroup1", "Limit"]
+      vb.customize ["modifyvm", :id, "--nicbandwidthgroup2", "Limit"]
+      vb.customize ["modifyvm", :id, "--nicbandwidthgroup3", "Limit"]
+      vb.customize ["modifyvm", :id, "--nicbandwidthgroup4", "Limit"]
+    vb.memory = 256
+    vb.cpus = 1
+  end
+  config.vm.define "router-1-reno" do |router1|
+    router1.vm.box = "generic/debian9"
+    router1.vm.hostname = "router-1-reno"
+    router1.vm.network "private_network", virtualbox__intnet: "broadcast_host-1-a", auto_config: false
+    router1.vm.network "private_network", virtualbox__intnet: "broadcast_host-1-b", auto_config: false
+    router1.vm.network "private_network", virtualbox__intnet: "broadcast_router-inter", auto_config: false
+    router1.vm.provision "shell", path: "router-1.sh"
+    config.vm.provider "virtualbox" do |vb|
+      vb.name = "router-1-reno"
+    end
+  end
+  config.vm.define "router-2-reno" do |router2|
+    router2.vm.box = "generic/debian9"
+    router2.vm.hostname = "router-2-reno"
+    router2.vm.network "private_network", virtualbox__intnet: "broadcast_host-2-c", auto_config: false
+    router2.vm.network "private_network", virtualbox__intnet: "broadcast_host-2-d", auto_config: false
+    router2.vm.network "private_network", virtualbox__intnet: "broadcast_router-inter", auto_config: false
+    router2.vm.provision "shell", path: "router-2.sh"
+    config.vm.provider "virtualbox" do |vb|
+      vb.name = "router-2-reno"
+    end
+  end
+  config.vm.define "host-1-a-reno" do |hosta|
+    hosta.vm.box = "generic/debian9"
+    hosta.vm.hostname = "host-1-a-reno"
+    hosta.vm.network "private_network", virtualbox__intnet: "broadcast_host-1-a", auto_config: false
+    hosta.vm.provision "shell", path: "host-1-a.sh"
+    config.vm.provider "virtualbox" do |vb|
+      vb.name = "host-1-a-reno"
+    end
+  end
+  config.vm.define "host-1-b-reno" do |hostb|
+    hostb.vm.box = "generic/debian9"
+    hostb.vm.hostname = "host-1-b-reno"
+    hostb.vm.network "private_network", virtualbox__intnet: "broadcast_host-1-b", auto_config: false
+    hostb.vm.provision "shell", path: "host-1-b.sh"
+    config.vm.provider "virtualbox" do |vb|
+      vb.name = "host-1-b-reno"
+    end
+  end
+  config.vm.define "host-2-c-reno" do |hostc|
+    hostc.vm.box = "generic/debian9"
+    hostc.vm.hostname = "host-2-c-reno"
+    hostc.vm.network "private_network", virtualbox__intnet: "broadcast_host-2-c", auto_config: false
+    hostc.vm.provision "shell", path: "host-2-c.sh"
+    config.vm.provider "virtualbox" do |vb|
+      vb.name = "host-2-c-reno"
+    end
+  end
+  config.vm.define "host-2-d-reno" do |hostd|
+    hostd.vm.box = "generic/debian9"
+    hostd.vm.hostname = "host-2-d-reno"
+    hostd.vm.network "private_network", virtualbox__intnet: "broadcast_host-2-d", auto_config: false
+    hostd.vm.provision "shell", path: "host-2-d.sh"
+    config.vm.provider "virtualbox" do |vb|
+      vb.name = "host-2-d-reno"
+    end
+  end
+end
