@@ -1,0 +1,224 @@
+# to host-2-c
+iperf3 -c 172.23.3.2 -V -i 1 -f m -t 120
+
+# to host-2-d
+iperf3 -c 172.23.4.2 -V -i 1 -f m -t 120
+
+
+####################### BBR #########################
+# vboxmanage commands
+
+#ALL 1 Gbps
+
+VBoxManage bandwidthctl host-2-c set Limit --limit 1g
+VBoxManage bandwidthctl host-2-d set Limit --limit 1g
+VBoxManage bandwidthctl host-1-a set Limit --limit 1g
+VBoxManage bandwidthctl host-1-b set Limit --limit 1g
+VBoxManage bandwidthctl host-1-b set Limit --limit 1g
+VBoxManage bandwidthctl router-1 set Limit --limit 1g
+VBoxManage bandwidthctl router-2 set Limit --limit 1g
+
+
+#R1 100 Mbps
+
+VBoxManage bandwidthctl host-2-c-cubi set Limit --limit 1g
+VBoxManage bandwidthctl host-2-d-cubi set Limit --limit 1g
+VBoxManage bandwidthctl host-1-a-cubi set Limit --limit 1g
+VBoxManage bandwidthctl host-1-b-cubi set Limit --limit 1g
+VBoxManage bandwidthctl host-1-b-cubi set Limit --limit 1g
+VBoxManage bandwidthctl router-1-cubi set Limit --limit 100m
+VBoxManage bandwidthctl router-2-cubi set Limit --limit 1g
+
+#R2 100 Mbps
+
+VBoxManage bandwidthctl host-2-c set Limit --limit 1g
+VBoxManage bandwidthctl host-2-d set Limit --limit 1g
+VBoxManage bandwidthctl host-1-a set Limit --limit 1g
+VBoxManage bandwidthctl host-1-b set Limit --limit 1g
+VBoxManage bandwidthctl host-1-b set Limit --limit 1g
+VBoxManage bandwidthctl router-1 set Limit --limit 1g
+VBoxManage bandwidthctl router-2 set Limit --limit 100m
+
+#All 5g
+
+VBoxManage bandwidthctl host-2-c set Limit --limit 5g
+VBoxManage bandwidthctl host-2-d set Limit --limit 5g
+VBoxManage bandwidthctl host-1-a set Limit --limit 5g
+VBoxManage bandwidthctl host-1-b set Limit --limit 5g
+VBoxManage bandwidthctl host-1-b set Limit --limit 5g
+VBoxManage bandwidthctl router-1 set Limit --limit 5g
+VBoxManage bandwidthctl router-2 set Limit --limit 5g
+
+#R1 1 Gbps
+
+VBoxManage bandwidthctl host-2-c set Limit --limit 5g
+VBoxManage bandwidthctl host-2-d set Limit --limit 5g
+VBoxManage bandwidthctl host-1-a set Limit --limit 5g
+VBoxManage bandwidthctl host-1-b set Limit --limit 5g
+VBoxManage bandwidthctl host-1-b set Limit --limit 5g
+VBoxManage bandwidthctl router-1 set Limit --limit 1g
+VBoxManage bandwidthctl router-2 set Limit --limit 5g
+
+#R2 1 Gbps
+
+VBoxManage bandwidthctl host-2-c set Limit --limit 5g
+VBoxManage bandwidthctl host-2-d set Limit --limit 5g
+VBoxManage bandwidthctl host-1-a set Limit --limit 5g
+VBoxManage bandwidthctl host-1-b set Limit --limit 5g
+VBoxManage bandwidthctl host-1-b set Limit --limit 5g
+VBoxManage bandwidthctl router-1 set Limit --limit 5g
+VBoxManage bandwidthctl router-2 set Limit --limit 1g
+
+
+
+
+
+
+
+
+
+####################### CUBIC #########################
+# vboxmanage commands
+
+#ALL 1 Gbps
+
+VBoxManage bandwidthctl host-2-c-cubic set Limit --limit 1g
+VBoxManage bandwidthctl host-2-d-cubic set Limit --limit 1g
+VBoxManage bandwidthctl host-1-a-cubic set Limit --limit 1g
+VBoxManage bandwidthctl host-1-b-cubic set Limit --limit 1g
+VBoxManage bandwidthctl host-1-b-cubic set Limit --limit 1g
+VBoxManage bandwidthctl router-1-cubic set Limit --limit 1g
+VBoxManage bandwidthctl router-2-cubic set Limit --limit 1g
+
+
+#R1 100 Mbps
+
+VBoxManage bandwidthctl host-2-c-cubic set Limit --limit 1g
+VBoxManage bandwidthctl host-2-d-cubic set Limit --limit 1g
+VBoxManage bandwidthctl host-1-a-cubic set Limit --limit 1g
+VBoxManage bandwidthctl host-1-b-cubic set Limit --limit 1g
+VBoxManage bandwidthctl host-1-b-cubic set Limit --limit 1g
+VBoxManage bandwidthctl router-1-cubic set Limit --limit 100m
+VBoxManage bandwidthctl router-2-cubic set Limit --limit 1g
+
+#R2 100 Mbps
+
+VBoxManage bandwidthctl host-2-c-cubic set Limit --limit 1g
+VBoxManage bandwidthctl host-2-d-cubic set Limit --limit 1g
+VBoxManage bandwidthctl host-1-a-cubic set Limit --limit 1g
+VBoxManage bandwidthctl host-1-b-cubic set Limit --limit 1g
+VBoxManage bandwidthctl host-1-b-cubic set Limit --limit 1g
+VBoxManage bandwidthctl router-1-cubic set Limit --limit 1g
+VBoxManage bandwidthctl router-2-cubic set Limit --limit 100m
+
+#All 5g
+
+VBoxManage bandwidthctl host-2-c-cubic set Limit --limit 5g
+VBoxManage bandwidthctl host-2-d-cubic set Limit --limit 5g
+VBoxManage bandwidthctl host-1-a-cubic set Limit --limit 5g
+VBoxManage bandwidthctl host-1-b-cubic set Limit --limit 5g
+VBoxManage bandwidthctl host-1-b-cubic set Limit --limit 5g
+VBoxManage bandwidthctl router-1-cubic set Limit --limit 5g
+VBoxManage bandwidthctl router-2-cubic set Limit --limit 5g
+
+#R1 1 Gbps
+
+VBoxManage bandwidthctl host-2-c-cubic set Limit --limit 5g
+VBoxManage bandwidthctl host-2-d-cubic set Limit --limit 5g
+VBoxManage bandwidthctl host-1-a-cubic set Limit --limit 5g
+VBoxManage bandwidthctl host-1-b-cubic set Limit --limit 5g
+VBoxManage bandwidthctl host-1-b-cubic set Limit --limit 5g
+VBoxManage bandwidthctl router-1-cubic set Limit --limit 1g
+VBoxManage bandwidthctl router-2-cubic set Limit --limit 5g
+
+#R2 1 Gbps
+
+VBoxManage bandwidthctl host-2-c-cubic set Limit --limit 5g
+VBoxManage bandwidthctl host-2-d-cubic set Limit --limit 5g
+VBoxManage bandwidthctl host-1-a-cubic set Limit --limit 5g
+VBoxManage bandwidthctl host-1-b-cubic set Limit --limit 5g
+VBoxManage bandwidthctl host-1-b-cubic set Limit --limit 5g
+VBoxManage bandwidthctl router-1-cubic set Limit --limit 5g
+VBoxManage bandwidthctl router-2-cubic set Limit --limit 1g
+
+
+
+
+
+
+
+
+
+####################### RENO #########################
+# vboxmanage commands
+
+#ALL 1 Gbps
+
+VBoxManage bandwidthctl host-2-c-reno set Limit --limit 1g
+VBoxManage bandwidthctl host-2-d-reno set Limit --limit 1g
+VBoxManage bandwidthctl host-1-a-reno set Limit --limit 1g
+VBoxManage bandwidthctl host-1-b-reno set Limit --limit 1g
+VBoxManage bandwidthctl host-1-b-reno set Limit --limit 1g
+VBoxManage bandwidthctl router-1-reno set Limit --limit 1g
+VBoxManage bandwidthctl router-2-reno set Limit --limit 1g
+
+
+#R1 100 Mbps
+
+VBoxManage bandwidthctl host-2-c-reno set Limit --limit 1g
+VBoxManage bandwidthctl host-2-d-reno set Limit --limit 1g
+VBoxManage bandwidthctl host-1-a-reno set Limit --limit 1g
+VBoxManage bandwidthctl host-1-b-reno set Limit --limit 1g
+VBoxManage bandwidthctl host-1-b-reno set Limit --limit 1g
+VBoxManage bandwidthctl router-1-reno set Limit --limit 100m
+VBoxManage bandwidthctl router-2-reno set Limit --limit 1g
+
+#R2 100 Mbps
+
+VBoxManage bandwidthctl host-2-c-reno set Limit --limit 1g
+VBoxManage bandwidthctl host-2-d-reno set Limit --limit 1g
+VBoxManage bandwidthctl host-1-a-reno set Limit --limit 1g
+VBoxManage bandwidthctl host-1-b-reno set Limit --limit 1g
+VBoxManage bandwidthctl host-1-b-reno set Limit --limit 1g
+VBoxManage bandwidthctl router-1-reno set Limit --limit 1g
+VBoxManage bandwidthctl router-2-reno set Limit --limit 100m
+
+#All 5g
+
+VBoxManage bandwidthctl host-2-c-reno set Limit --limit 5g
+VBoxManage bandwidthctl host-2-d-reno set Limit --limit 5g
+VBoxManage bandwidthctl host-1-a-reno set Limit --limit 5g
+VBoxManage bandwidthctl host-1-b-reno set Limit --limit 5g
+VBoxManage bandwidthctl host-1-b-reno set Limit --limit 5g
+VBoxManage bandwidthctl router-1-reno set Limit --limit 5g
+VBoxManage bandwidthctl router-2-reno set Limit --limit 5g
+
+#R1 1 Gbps
+
+VBoxManage bandwidthctl host-2-c-reno set Limit --limit 5g
+VBoxManage bandwidthctl host-2-d-reno set Limit --limit 5g
+VBoxManage bandwidthctl host-1-a-reno set Limit --limit 5g
+VBoxManage bandwidthctl host-1-b-reno set Limit --limit 5g
+VBoxManage bandwidthctl host-1-b-reno set Limit --limit 5g
+VBoxManage bandwidthctl router-1-reno set Limit --limit 1g
+VBoxManage bandwidthctl router-2-reno set Limit --limit 5g
+
+#R2 1 Gbps
+
+VBoxManage bandwidthctl host-2-c-reno set Limit --limit 5g
+VBoxManage bandwidthctl host-2-d-reno set Limit --limit 5g
+VBoxManage bandwidthctl host-1-a-reno set Limit --limit 5g
+VBoxManage bandwidthctl host-1-b-reno set Limit --limit 5g
+VBoxManage bandwidthctl host-1-b-reno set Limit --limit 5g
+VBoxManage bandwidthctl router-1-reno set Limit --limit 5g
+VBoxManage bandwidthctl router-2-reno set Limit --limit 1g
+
+
+
+
+
+
+
+
+
+
