@@ -10,18 +10,51 @@ apt-get install -y frr --assume-yes --force-yes
 # Forwarding enabled
 sysctl -w net.ipv4.ip_forward=1
 
+# setting BBR as TCP congestion control
+sysctl -w net.core.default_qdisc=fq
+sysctl -w net.ipv4.tcp_congestion_control=bbr
+
+echo "
+
+#################################################
+#                                               #
+#                                               #
+#          TEST ON BBR AUTOMATICALLY SET        #
+#                                               #
+#                                               #
+#             IF YOU SEE AS BELOW               #
+#                                               #
+#      net.ipv4.tcp_congestion_control=bbr      #
+#                                               #
+#          EVERYTHING HAS WORKED FINE           #
+#                                               #
+#                                               #
+#                                               #
+#################################################
+
+
+"
+
+# Checking
+sysctl -p
+sysctl net.ipv4.tcp_congestion_control
+
+# Enable packet pacing to "NGbps"
+# sbin/tc qdisc add dev eth1 root fq maxrate Ngbit
+
+
 # Setting up interface eth1 (South)
 ip link set dev eth1 up
-ip addr add 172.23.1.29/30 dev eth1
+ip addr add 172.23.0.1/24 dev eth1
 
-# Setting up interface eth2 (Est)
-ip link set dev eth2 up
-ip addr add 172.23.1.37/30 dev eth2
-
-# Setting up interface eth3 (South)
+# Setting up interface eth3 (North)
 ip link set dev eth3 up
-ip addr add 172.23.1.25/30 dev eth3
+ip addr add 172.23.2.1/30 dev eth3
+
+# Setting up interface eth2 (South)
+ip link set dev eth2 up
+ip addr add 172.23.1.1/24 dev eth2
 
 # set router-2 ad default router
 ip route del default
-ip route add default via 172.23.1.38
+ip route add default via 172.23.2.2
