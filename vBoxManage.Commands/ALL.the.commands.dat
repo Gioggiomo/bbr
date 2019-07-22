@@ -1,7 +1,7 @@
-# to host-2-c
+# --> host-2-c
 iperf3 -c 172.23.3.2 -V -i 1 -f m -t 120
 
-# to host-2-d
+# --> host-2-d
 iperf3 -c 172.23.4.2 -V -i 1 -f m -t 120
 
 
@@ -21,13 +21,13 @@ VBoxManage bandwidthctl router-2 set Limit --limit 1g
 
 #R1 100 Mbps
 
-VBoxManage bandwidthctl host-2-c-cubi set Limit --limit 1g
-VBoxManage bandwidthctl host-2-d-cubi set Limit --limit 1g
-VBoxManage bandwidthctl host-1-a-cubi set Limit --limit 1g
-VBoxManage bandwidthctl host-1-b-cubi set Limit --limit 1g
-VBoxManage bandwidthctl host-1-b-cubi set Limit --limit 1g
-VBoxManage bandwidthctl router-1-cubi set Limit --limit 100m
-VBoxManage bandwidthctl router-2-cubi set Limit --limit 1g
+VBoxManage bandwidthctl host-2-c set Limit --limit 1g
+VBoxManage bandwidthctl host-2-d set Limit --limit 1g
+VBoxManage bandwidthctl host-1-a set Limit --limit 1g
+VBoxManage bandwidthctl host-1-b set Limit --limit 1g
+VBoxManage bandwidthctl host-1-b set Limit --limit 1g
+VBoxManage bandwidthctl router-1 set Limit --limit 100m
+VBoxManage bandwidthctl router-2 set Limit --limit 1g
 
 #R2 100 Mbps
 
